@@ -3,7 +3,7 @@
 /* Directives */
 
 /**
- * <inline model='page.text' action='updateDb'/>
+ * inline pre text input a textareu ucenie sa zo zdrojaku.cz :)
  */
 articlesApp.directive('inline', function(){
   var KEY_CODE_ENTER = 13;
@@ -82,6 +82,7 @@ articlesApp.directive('inline', function(){
   }
 });
 
+// text input pole s save a cancel buttonami
 articlesApp.directive('inputtext', function(){
   var KEY_CODE_ENTER = 13;
   return {
@@ -127,3 +128,51 @@ articlesApp.directive('inputtext', function(){
     }
   }
 });
+
+// articlesApp.directive('inputcheckbox', function(){
+//   var KEY_CODE_ENTER = 13;
+//   return {
+//     restrict: 'E',
+//     replace: true,
+//     scope: {
+//       action: '=action',
+//       model: '=model'
+//     },
+//     template:
+//       '<div>' +
+//         '<span ng-hide="mode">{{model||"Not Sticky!"}}</span>' +
+//         '<input id="sticky" type="checkbox" ng-show="mode" ng-model="model">' +
+//         '<label for="sticky" ng-show="mode">Mark as Sticky!</label>' +
+//         '<input type="submit" ng-show="mode" value="SAVE!">' +
+//         '<input type="button" ng-show="mode" value="Cancel">' +
+//       '</div>',
+//     link: function(scope, element) {
+//       var children = element.children();
+//       var span  = angular.element(children[0]);
+//       var input = angular.element(children[1]);
+//       var submit = angular.element(children[2]);
+//       var cancel = angular.element(children[3]);
+//       var oldContent;
+
+//       span.bind('click', function(){
+//         oldContent = element.text().trim();
+//         console.log(oldContent);
+//         scope.$apply('mode=true');
+//         input[0].focus();
+//       });
+
+//       submit.bind('click', function(){
+//         var newContent = element.text().trim();
+//         scope.$apply('mode=false');
+//         if (newContent != oldContent) {
+//           scope.action();
+//         }
+//       });
+
+//       cancel.bind('click', function() {
+//         scope.model = oldContent;
+//         scope.$apply('mode=false');
+//       });
+//     }
+//   }
+// });
