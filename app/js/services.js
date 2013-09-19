@@ -15,8 +15,8 @@ angular.module('articlesAppServices', ['ngResource']).
       index: {method:'GET', isArray:true},
       show: {method:'GET'},
       create: {method:'POST'},
-      save: {method:'PATCH'},
-      update: {method:'PATCH'},
+      save: {method:'PUT'},
+      update: {method:'PUT'},
       remove: {method:'DELETE'}
     })
   });

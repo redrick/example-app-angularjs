@@ -82,46 +82,48 @@ articlesApp.directive('inline', function(){
   }
 });
 
+articlesApp.directive('inputtext', function(){
+  var KEY_CODE_ENTER = 13;
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      action: '=action',
+      model: '=model'
+    },
+    template:
+      '<div>' +
+        '<span ng-hide="mode">{{model}}</span>' +
+        '<input type="text" ng-show="mode" ng-model="model" required>' +
+        '<input type="submit" ng-show="mode" value="SAVE!">' +
+        '<input type="button" ng-show="mode" value="Cancel">' +
+      '</div>',
+    link: function(scope, element) {
+      var children = element.children();
+      var span  = angular.element(children[0]);
+      var input = angular.element(children[1]);
+      var submit = angular.element(children[2]);
+      var cancel = angular.element(children[3]);
+      var oldContent;
 
+      span.bind('click', function(){
+        oldContent = element.text().trim();
+        scope.$apply('mode=true');
+        input[0].focus();
+      });
 
+      submit.bind('click', function(){
+        var newContent = element.text().trim();
+        scope.$apply('mode=false');
+        if (newContent != oldContent) {
+          scope.action();
+        }
+      });
 
-
-// 'use strict';
-
-// /* Directives */
-
-
-// angular.module('articlesAppDirectives', []).
-//   directive('inputtext', function(){
-//     var KEY_CODE_ENTER = 13;
-//     return {
-//       restrict: 'E',
-//       replace: true,
-//       scope: {
-//         do: '=do',
-//         model: '=model'
-//       },
-//       template:
-//         '<div>' +
-//           '<span ng-hide="mode">{{model}}</span>' +
-//           '<input type="text" ng-show="mode" ng-model="model" required>' +
-//           '<input type="submit" ng-show="mode" value="SAVE!">' +
-//         '</div>',
-//       link: function(scope, element) {
-//         var children = element.children();
-//         var span  = angular.element(children[0]);
-//         var input = angular.element(children[1]);
-//         var submit = angular.element(children[2]);
-
-//         span.click( function(){
-//           scope.$apply('mode=true');
-//           input.focus();
-//         });
-
-//         submit.click( function(){
-//           scope.$apply('mode=false');
-//           scope.do();
-//         });
-//       }
-//     }
-//   });
+      cancel.bind('click', function() {
+        scope.model = oldContent;
+        scope.$apply('mode=false');
+      });
+    }
+  }
+});
