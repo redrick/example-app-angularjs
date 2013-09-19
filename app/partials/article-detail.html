@@ -1,6 +1,11 @@
-{{article.name}}
-<p>{{article.content}}</p>
+<h2>
+  <inline model='article.name' action='update'></inline>
+</h2>
+<p>
+  <inline model='article.content'  textarea='true' action='update'></inline>
+</p>
 
 
 <a href="#/articles">Back</a>
 <a href="#/articles/{{article.id}}/edit">Edit</a>
+<a href="#" ng-click="remove()">Smazat</a>

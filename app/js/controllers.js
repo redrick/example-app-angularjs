@@ -12,11 +12,22 @@ function ArticleListCtrl($scope, Article) {
 // ArticleListCtrl.$inject = ['$scope', '$http'];
 
 // function ArticleDetailCtrl($scope, $routeParams, $http) {
-function ArticleDetailCtrl($scope, $routeParams, Article) {
+function ArticleDetailCtrl($scope, $routeParams, $location, Article) {
   // $http({method: 'GET', url: 'http://localhost:3003/api/articles/'+$routeParams.articleId}).success(function(data) {
   //   $scope.article = data;
   // });
   $scope.article = Article.get({articleId: $routeParams.articleId});
+
+  $scope.update = function() {
+    Article.update({articleId: $routeParams.articleId, article: $scope.article});  
+  }
+
+  $scope.remove = function() {
+    Article.remove({articleId: $routeParams.articleId}, function(){
+      $location.path('/articles');
+    });
+  }
+
 }
 // ArticleDetailCtrl.$inject = ['$scope', '$routeParams'];
 

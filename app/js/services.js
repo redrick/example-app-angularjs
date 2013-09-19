@@ -12,6 +12,11 @@ angular.module('articlesAppServices', ['ngResource']).
       //     'Accept': 'application/json, text/plain, */*'
       //   }
       // } 
-      save: {method:'PATCH', isArray: true} 
+      index: {method:'GET', isArray:true},
+      show: {method:'GET'},
+      create: {method:'POST'},
+      save: {method:'PATCH'},
+      update: {method:'PATCH'},
+      remove: {method:'DELETE'}
     })
   });
