@@ -1,11 +1,23 @@
 {
-  "name": "angualrjs-seed",
-  "description": "A starter project for angular js",
+  "name": "articleApp",
+  "description": "Simple blog frontend for testing purposes",
   "devDependencies": {
-        "phantomjs" : "*",
-        "karma" : "*",
-        "karma-junit-reporter" : "*",    
-        "karma-jasmine" : "*",
-        "karma-ng-scenario" : "*"
-    }
+    "phantomjs" : "*",
+    "karma-junit-reporter" : "*",    
+    "karma-jasmine" : "latest",
+    "grunt": "~0.4.1",
+    "grunt-css": "~0.5.4",
+    "grunt-contrib-connect": "~0.1.2",
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-shell": "~0.2.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-karma": "~0.6.1",
+    "bower": "~0.9.2",
+    "karma": "~0.10.0",
+    "karma-chrome-launcher": "latest",
+    "karma-ng-scenario": "latest",
+    "chai": "1.4.0"
+  }
 }
